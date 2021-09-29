@@ -14,9 +14,5 @@
         android:id="@+id/MainFragment"
         android:name="ch.wenksi.madlevel4task2.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
-        <action
-            android:id="@+id/action_mainFragment_to_historyFragment"
-            app:destination="@id/HistoryFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_main" />
 </navigation>
