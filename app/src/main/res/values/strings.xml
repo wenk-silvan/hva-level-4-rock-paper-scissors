@@ -5,4 +5,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="menu_item_play">Play</string>
     <string name="menu_item_history">History</string>
+    <string name="tvPlayerTwo">Computer</string>
+    <string name="tvVersus">v.s.</string>
+    <string name="tvPlayerOne">You</string>
+    <string name="tvStatisticsTitle">Your all time statistics</string>
+    <string name="tvInstructions">Instructions: Select rock, paper or scissors to play.</string>
+    <string name="tvTitle">Rock, Paper, Scissors</string>
 </resources>

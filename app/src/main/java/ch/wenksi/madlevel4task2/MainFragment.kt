@@ -1,59 +1,82 @@
 package ch.wenksi.madlevel4task2
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import ch.wenksi.madlevel4task2.databinding.FragmentMainBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [MainFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MainFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentMainBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        _binding = FragmentMainBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MainFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MainFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initImageButtons()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun initImageButtons() {
+        binding.ibGameRock.setOnClickListener {
+            play(Hand.Rock, getRandomHand())
+        }
+        binding.ibGamePaper.setOnClickListener {
+            play(Hand.Paper, getRandomHand())
+        }
+        binding.ibGameScissors.setOnClickListener {
+            play(Hand.Scissors, getRandomHand())
+        }
+    }
+
+    private fun displayHandsAndResult(player: Hand, computer: Hand, result: Result) {
+        binding.ivHandPlayer.setImageResource(player.imageResourceId)
+        binding.ivHandComputer.setImageResource(computer.imageResourceId)
+        binding.tvResult.text = result.text
+    }
+
+    private fun getRandomHand(): Hand = listOf(Hand.Rock, Hand.Paper, Hand.Scissors).random()
+
+    private fun play(player: Hand, computer: Hand) {
+        val result: Result = when(player) {
+            Hand.Rock -> when(computer) {
+                Hand.Rock -> Result.Draw
+                Hand.Paper -> Result.Lose
+                Hand.Scissors -> Result.Win
             }
+            Hand.Paper -> when(computer) {
+                Hand.Rock -> Result.Win
+                Hand.Paper -> Result.Draw
+                Hand.Scissors -> Result.Lose
+            }
+            Hand.Scissors -> when(computer) {
+                Hand.Rock -> Result.Lose
+                Hand.Paper -> Result.Win
+                Hand.Scissors -> Result.Draw
+            }
+        }
+        displayHandsAndResult(player, computer, result)
+        storeResult(result)
+    }
+
+    private fun storeResult(result: Result) {
+        Log.e("", "Not yet implemented")
     }
 }
