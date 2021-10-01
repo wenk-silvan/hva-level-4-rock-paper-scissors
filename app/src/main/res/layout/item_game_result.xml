@@ -2,6 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/llGameResult"
+    android:layout_marginTop="12dp"
+    android:layout_marginBottom="12dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
@@ -16,7 +18,7 @@
 
     <TextView
         android:id="@+id/tvTimestamp"
-        style="@style/TextAppearance.MaterialComponents.Headline6"
+        style="@style/TextAppearance.MaterialComponents.Subtitle1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -28,7 +30,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal">
-        
+
         <LinearLayout
             android:id="@+id/llHandPlayerOne"
             android:layout_width="wrap_content"
