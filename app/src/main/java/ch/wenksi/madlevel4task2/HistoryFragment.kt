@@ -45,8 +45,13 @@ class HistoryFragment : Fragment() {
         initRecyclerView()
 
         binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+            mainScope.launch {
+                withContext(Dispatchers.IO) {
+                    gameResultRepository.deleteStatistics()
+                }
+            }
+            gameResults.clear()
+            gameResultsAdapter.notifyDataSetChanged()
         }
     }
 
