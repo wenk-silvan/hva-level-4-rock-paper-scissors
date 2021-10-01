@@ -5,6 +5,19 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FFFFFF</color>
+    <color name="white">#000000</color>
+
+    <!-- Palette: https://flatuicolors.com/palette/defo -->
+    <color name="turquoise">#1abc9c</color>
+    <color name="emerald">#2ecc71</color>
+    <color name="peterriver">#3498db</color>
+    <color name="amethyst">#9b59b6</color>
+    <color name="wetasphalt">#34495e</color>
+    <color name="concrete">#95a5a6</color>
+    <color name="asbestos">#7f8c8d</color>
+    <color name="silver">#bdc3c7</color>
+    <color name="clouds">#ecf0f1</color>
+    <color name="sunflower">#f1c40f</color>
+    <color name="midnightblue">#2c3e50</color>
 </resources>

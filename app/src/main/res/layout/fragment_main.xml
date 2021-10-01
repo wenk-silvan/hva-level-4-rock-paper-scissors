@@ -3,12 +3,118 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/llDescription"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:gravity="center"
+        android:padding="8dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.MaterialComponents.Headline4"
+            android:text="Rock, Paper, Scissors"
+            android:layout_marginBottom="@dimen/llDescriptionWidgetsMarginBottom"
+            app:layout_constraintBottom_toTopOf="@id/tvInstructions" />
+
+        <TextView
+            android:id="@+id/tvInstructions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:layout_marginBottom="@dimen/llDescriptionWidgetsMarginBottom"
+            android:text="Instructions: Select rock, paper or scissors to play."
+            />
+
+        <TextView
+            android:id="@+id/tvStatisticsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            style="@style/TextAppearance.MaterialComponents.Overline"
+            android:layout_marginBottom="@dimen/llDescriptionWidgetsMarginBottom"
+            android:text="Your all time statistics" />
+
+        <TextView
+            android:id="@+id/tvStatistics"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            style="@style/TextAppearance.MaterialComponents.Overline"
+            android:layout_marginBottom="@dimen/llDescriptionWidgetsMarginBottom"
+            tools:text="Win: 10, Draw: 1, Lose: 5" />
+
+        <TextView
+            android:id="@+id/tvResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="22dp"
+            style="@style/TextAppearance.MaterialComponents.Headline4"
+            tools:text="Win" />
+
+        <LinearLayout
+            android:id="@+id/llResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <ImageView
+                android:background="@color/peterriver"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/rock"/>
+
+            <TextView
+                android:id="@+id/tvVersus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="22dp"
+                android:text="v.s." />
+
+            <ImageView
+                android:background="@color/peterriver"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/paper" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llGame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom|center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:background="@color/clouds"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="22dp"
+                android:src="@drawable/rock" />
+
+            <ImageView
+                android:background="@color/clouds"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="22dp"
+                android:src="@drawable/paper" />
+
+            <ImageView
+                android:background="@color/clouds"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/scissors" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
 
 </FrameLayout>
