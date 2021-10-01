@@ -7,10 +7,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import ch.wenksi.madlevel4task2.databinding.FragmentMainBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.time.Instant
+import java.util.*
 
 class MainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var gameResultRepository: GameResultRepository
+    private val mainScope = CoroutineScope(Dispatchers.Main)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +35,7 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        gameResultRepository = GameResultRepository(requireContext())
         initImageButtons()
     }
 
@@ -73,10 +83,15 @@ class MainFragment : Fragment() {
             }
         }
         displayHandsAndResult(player, computer, result)
-        storeResult(result)
+        storeResult(player, computer, result)
     }
 
-    private fun storeResult(result: Result) {
-        Log.e("", "Not yet implemented")
+    private fun storeResult(player: Hand, computer: Hand, result: Result) {
+        val gameResult = GameResult(result.text, Date().time, player.text, computer.text)
+        mainScope.launch {
+            withContext(Dispatchers.IO) {
+                gameResultRepository.insertGameResult(gameResult)
+            }
+        }
     }
 }

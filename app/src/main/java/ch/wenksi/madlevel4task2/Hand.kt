@@ -5,3 +5,16 @@ enum class Hand(val imageResourceId: Int, val text: String) {
     Paper(R.drawable.paper, "Paper"),
     Scissors(R.drawable.scissors, "Scissors")
 }
+
+class HandHelper {
+    companion object {
+        fun getFromString(value: String): Hand {
+            return when(value) {
+                "Rock" -> Hand.Rock
+                "Paper" -> Hand.Paper
+                "Scissors" -> Hand.Scissors
+                else -> Hand.Rock // TODO: Improve with snackbar
+            }
+        }
+    }
+}
